@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" href="popup.css" type="text/css">
+<title>No-Cache Popup 0.5</title>
+</head>
+<body>
+<h1>Disable Caching<img src="icons/tbd-status.png" id="toggle"></h1>
+<div id="controls">
+	<div id="css">
+		<p>Stylesheet Hosts:</p>
+		<ol id="hostlist"></ol>
+	</div>
+	<div id="js">
+		<p>Javascript Hosts:</p>
+		<ol id="hostlistjs"></ol>
+	</div>
+	<p id="errs"></p>
+	<p><button type="button" id="btnGo" disabled>Add Host Permissions (opens the Options page)</button> <button type="button" id="btnCancel">Cancel</button></p>
+</div>
+</body>
+<script type="text/javascript" src="popup.js"></script>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Options for No-Cache: No-Store for Selected Hosts 0.5</title>
+<style>
+body {font-size: 16px;}
+h2 {font-size: 1.1em;}
+#hostlist, #newhostlist {width: 90%; height: 9em;}
+#newhostlist:not(:placeholder-shown) {background-color: #ffc;}
+#toggle {
+  position: absolute;
+  right: 8px;
+  top: 17px;
+}
+</style>
+</head>
+<body>
+<form>
+<h2>Host Permission Editor<img src="icons/tbd-status.png" id="toggle"></h2>
+<p>Cache-Control will be set to no-store for selected files from these hosts. Edit lists as desired, then click: <button type="button" id="btnHost">Update Host Permissions</button></p>
+<p><em>Currently permitted (delete to remove):</em></p>
+<textarea id="hostlist"></textarea>
+<p><em>To be added:</em></p>
+<textarea id="newhostlist" placeholder="[If the expected text does not appear here, reload the page]"></textarea>
+<h2>Content Type Selector</h2>
+<p>Cache-Control will be set to no-store for responses matching these content types:
+<p class="chk">
+	<label><input type="checkbox" name="css" value="text/css">text/css</label><br>
+	<label><input type="checkbox" name="javascript" value="application/javascript">application/javascript</label><br>
+	<label><input type="checkbox" name="html" value="text/html">text/html</label>
+</p>
+<p id="oops"></p>
+</form>
+<script src="options.js"></script>
+</body>
+</html>

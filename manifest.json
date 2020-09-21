@@ -1,0 +1,49 @@
+{
+	"manifest_version": 2,
+	"name": "No-Cache: No-Store for Selected Hosts",
+	"description": "Bypass Firefox's aggressive caching of CSS and other content during development.",
+	"version": "0.5",
+	"applications":{
+		"gecko": {
+			"id": "no-cache@jeffersonscher.com",
+			"strict_min_version": "60.0"
+		}
+	},
+	"developer": {
+		"name": "Jefferson \"jscher2000\" Scher",
+		"url": "https://github.com/jscher2000/"
+	},
+	"background": {
+		"scripts": [
+			"background.js"
+		]
+	},
+	"icons": {
+		"128": "icons/no-cache-128.png"
+	},
+	"page_action": {
+		"show_matches": [
+			"<all_urls>"
+		],
+		"browser_style": true,
+		"default_icon": {
+			"128": "icons/no-cache-128.png"
+		},
+		"default_title": "Disable Caching for This Page",
+		"default_popup": "popup.html"
+	},
+	"permissions": [
+		"*://www.jeffersonscher.com/*",
+		"activeTab",
+		"webRequest",
+		"webRequestBlocking",
+		"storage"
+    ],
+	"optional_permissions": [
+		"<all_urls>"
+    ],
+	"options_ui": {
+		"page": "options.html",
+		"browser_style": true
+	}
+}
