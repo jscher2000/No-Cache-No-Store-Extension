@@ -1,6 +1,7 @@
 /* 
   Copyright 2020. Jefferson "jscher2000" Scher. License: MPL-2.0.
   v0.5 - initial design
+  v0.6 - update listener after each change
 */
 
 /**** Retrieve Preferences From Storage and Set Up Listener ****/
@@ -120,3 +121,34 @@ function handleMessage(request, sender, sendResponse) {
 	}
 }
 browser.runtime.onMessage.addListener(handleMessage);
+
+/**** Monitor host permission changes and refresh the listener ****/
+
+browser.permissions.onAdded.addListener(function(permissions){
+	// Not using permissions because it's only the added/removed host
+	stopListening();
+	browser.permissions.getAll().then((perms) => {
+		arrMatches = perms.origins;
+		// Enable now
+		startListening();
+	})
+});
+
+browser.permissions.onRemoved.addListener(function(permissions){
+	// Not using permissions because it's only the added/removed host
+	stopListening();
+	browser.permissions.getAll().then((perms) => {
+		arrMatches = perms.origins;
+		// Enable now
+		startListening();
+	})
+});
+
+/**** Monitor storage changes and update oPrefs ****/
+
+browser.storage.onChanged.addListener(function(changes, area){
+	if (area == 'local' && 'userprefs' in changes){
+		oPrefs.types = changes.userprefs.newValue.types;
+	}
+});
+
